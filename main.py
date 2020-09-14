@@ -11,11 +11,13 @@ from decouple import config
 ###################### These are variables and dictionaries and functions that are not to be changed. 
 
 # Meraki Dashboard API information
-MERAKI_DASHBOARD_API_KEY = config("MERAKI_API_KEY")
+# TODO Add MERAKI_API_KEY from your environment file .env
+MERAKI_DASHBOARD_API_KEY = config("MERAKI_API_KEY") 
 BASEURL = "https://api.meraki.com/api/v0/"
 
 # The Meraki Network that Liza has access to
-NETWORK_ID = "INSERT_NETWORK_ID"
+# TODO Add Network ID
+NETWORK_ID = "INSERT_NETWORK_ID" 
 
 # Headers for the REST API request
 headers = {
@@ -25,7 +27,9 @@ headers = {
 }
 
 # Webex Teams information. Bot Token + Room ID
-BOT_TOKEN = config("GREGSASSISTANT_TOKEN")
+# TODO Add BOT_TOKEN from your environment file .env
+BOT_TOKEN = config("BOT_TOKEN")
+# TODO Add ROOM ID from your common ROOM with BOT
 ROOM_ID = "ROOM_ID"
 
 # Webex Teams SDK 
@@ -95,7 +99,7 @@ def create_ssid(name, password):
     
     return response
 
-
+# Delete SSID from network
 def delete_ssid(name):
     SSIDs = get_SSIDs_for_network()
     if name in SSIDs[0]:
@@ -121,6 +125,7 @@ def delete_ssid(name):
     
     return response
 
+# Help message
 def help_me():
     
     return (
@@ -131,6 +136,7 @@ def help_me():
         "Show - Show list of SSIDs.\n"
     )
 
+# Generates string of all SSIDs in network
 def show_ssids():
     ssid_list = get_SSIDs_for_network()
     string = ""
@@ -139,7 +145,6 @@ def show_ssids():
     return string
 
 ## Flask application framework
-
 app = Flask(__name__)
 
 @app.route("/webhook", methods=["GET", "POST"])
