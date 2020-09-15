@@ -38,7 +38,7 @@ The application is built using a Flask framework and communicates with the help 
 
 -This application needs to be hosted somewhere where is has access to the internet. It can either be on your local machine where you use for instance a ngrok tunnel to access the internet, or you can host it on a PaaS. It is up to you.
 
--You need a Webex Teams Account and access to developer.cisco.com
+-You need a Webex Teams Account and access to developer.webex.com
 
 -You need a Meraki Network and a Meraki API Key (that you get from the Meraki Dashboard).
 
@@ -71,7 +71,7 @@ The Room ID of your Webex Teams Bot. You will find it at developer.webex.com und
 ROOM_ID = "ROOM_ID"
 ```
 
-In order for your application to detect whenever a message is created in your WT Room, you need to create a Webhook that points to your application's publicly accessible URL and include "/webook" in the end. You create your Webhook in developer.cisco.com under API Documentation "Create Webhook". 
+In order for your application to detect whenever a message is created in your WT Room, you need to create a Webhook that points to your application's publicly accessible URL and include "/webook" in the end. You create your Webhook in developer.webex.com under API Documentation "Create Webhook". 
 
 After this you should be able to be good to go. If you run your app locally you execute it
 
