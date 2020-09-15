@@ -56,11 +56,22 @@ The second step is to install all packages you need in order to run the code:
 ```
 pip install -r requirements.txt
 ```
-Next thing you want to do is to update your environment variables that you store in a .env file. The variables you need to store are: 
+Next thing you want to do is to update your environment variables that you store in a .env file. Never share these keys with anyone. The variables you need to store are: 
 
 ```
 MERAKI_API_KEY=**PASTE_HERE**
 GREG_BOT_TOKEN=**PASTE_HERE**
+```
+Next step is to fill out following variables: 
+
+Which Meraki Network you want to communicate with: 
+```
+NETWORK_ID = "INSERT_NETWORK_ID" 
+```
+
+The Room ID of your Webex Teams Bot. You will find it at developer.webex.com under API Documentation and by using the API "GET Room List". 
+```
+ROOM_ID = "ROOM_ID"
 ```
 ## Authors & Maintainers
 
