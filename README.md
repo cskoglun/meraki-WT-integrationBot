@@ -1,8 +1,5 @@
-# main
+# meraki-WT-integrationBot
 
-*meraki-WT-integrationBot*
-
----
 
 ## Motivation
 
