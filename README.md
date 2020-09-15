@@ -45,6 +45,10 @@ The application is built using a Flask framework and communicates with the help 
 
 This application needs to be hosted somewhere where is has access to the internet. It can either be on your local machine where you use for instance a ngrok tunnel to access the internet, or you can host it on a PaaS. It is up to you.
 
+You need a Webex Teams Account and access to developer.cisco.com
+
+You need a Meraki Network and a Meraki API Key (that you get from the Meraki Dashboard).
+
 ## Installation
 
 The first step is to clone this github repository in the directory where you will be running your code. 
