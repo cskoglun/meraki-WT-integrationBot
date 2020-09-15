@@ -8,14 +8,7 @@
 
 This code is the reference to the "Program your network to work for you" webinar that was aired 16th of September 2020.  
 
-main.py is the brain behind a Webex Teams bot that integrates with a Meraki Network. The goal of the bot is to outsource the taks of creating, deleting and managing SSID:s from a network engineer to the receptionst of the company. The whole value proposition is that the network engineer in this way offloads a repetitive and easy task to someone who does not necessarily come from an IT background. However, the code itself can be adjusted after your own needs (adjust functions, messages etc.) to whatever the purpose is. See it more as a framework/skeleton to get started with creating Webex Teams Bots, integrating with other systems and learning how to leverage APIs to do that. Enjoy ChatOps!! 
-
-## Show Me!
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-
-What visual, if shown, clearly articulates the impact of what you have created?  In as concise a visualization as possible (code sample, CLI output, animated GIF, or screenshot) show what your project makes possible.
+**main.py** is the brain behind a Webex Teams bot that integrates with a Meraki Network. The goal of the bot is to outsource the taks of creating, deleting and managing SSID:s from a network engineer to the receptionst of the company. The whole value proposition is that the network engineer in this way offloads a repetitive and easy task to someone who does not necessarily come from an IT background. However, the code itself can be adjusted after your own needs (adjust functions, messages etc.) to whatever the purpose is. See it more as a framework/skeleton to get started with creating Webex Teams Bots, integrating with other systems and learning how to leverage APIs to do that. Enjoy ChatOps!! 
 
 ## Features
 
@@ -77,6 +70,17 @@ The Room ID of your Webex Teams Bot. You will find it at developer.webex.com und
 ```
 ROOM_ID = "ROOM_ID"
 ```
+
+In order for your application to detect whenever a message is created in your WT Room, you need to create a Webhook that points to your application's publicly accessible URL and include "/webook" in the end. You create your Webhook in developer.cisco.com under API Documentation "Create Webhook". 
+
+After this you should be able to be good to go. If you run your app locally you execute it
+
+````
+python main.py
+
+````
+If you run it on a PaaS then you need to deploy it. 
+
 ## Authors & Maintainers
 
 - Christina Skoglund <cskoglun@cisco.com>
