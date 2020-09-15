@@ -1,3 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""main Console Script.
+
+Copyright (c) 2020 Cisco and/or its affiliates.
+
+This software is licensed to you under the terms of the Cisco Sample
+Code License, Version 1.1 (the "License"). You may obtain a copy of the
+License at
+
+               https://developer.cisco.com/docs/licenses
+
+All use of the material herein must be in accordance with the terms of
+the License. All rights not expressly granted by the License are
+reserved. Unless required by applicable law or agreed to separately in
+writing, software distributed under the License is distributed on an "AS
+IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied.
+
+"""
+
+
+
+__author__ = "Christina Skoglund"
+__email__ = "cskoglun@cisco.com"
+__version__ = "0.1.0"
+__copyright__ = "Copyright (c) 2020 Cisco and/or its affiliates."
+__license__ = "Cisco Sample Code License, Version 1.1"
+
+
+
+
+
+
+
+
 import requests
 from flask import Flask, request
 from webexteamssdk import WebexTeamsAPI, Webhook, webexteamssdkException
@@ -182,14 +218,12 @@ def webhook():
 
                 # If password is less than 8 characters, send error message.
                 if len(password_new_SSID) < 8:
-                    reply_text = (
-                        "Oups! Password must be at least 8 characters. Please try again."
-                    )
+
                     reply_text_m = (
                         "Oups! Password must be at **least 8 characters**. Please try again."
                     )
                     try:
-                        api.messages.create(roomId=ROOM_ID, text=reply_text, markdown=reply_text_m)
+                        api.messages.create(roomId=ROOM_ID,  markdown=reply_text_m)
                     except:
                         print("ERROR - could not create password warning message.")
                         pass
@@ -199,23 +233,19 @@ def webhook():
                         create_ssid(name_new_SSID, password_new_SSID)
 
                         # Message that is sent off to Liza's room
-                        reply_text = "Thank you for your request, SSID {} has been created. Password: {}".format(
-                            name_new_SSID, password_new_SSID
-                        )
+
                         reply_text_markdown = "Thank you for your request, SSID **{}** has been created. Password: **{}**".format(
                             name_new_SSID, password_new_SSID
                         )
                         
                         # Message that is sent off to Greg's room 
-                        reply_text_c = "FYI: Liza created a new SSID {} with password: {} at site: Copenhagen".format(
-                            name_new_SSID, password_new_SSID
-                        )
+
                         reply_text_markdownc = "**FYI:** Liza created a new SSID: **{}** with password: **{}** at site: **Copenhagen**".format(
                             name_new_SSID, password_new_SSID
                         )
                         
-                        api.messages.create(roomId=ROOM_ID, text=reply_text, markdown=reply_text_markdown)
-                        tocommonroom= api.messages.create(roomId=ROOM_ID_commonRoom, text=reply_text_c, markdown=reply_text_markdownc)
+                        api.messages.create(roomId=ROOM_ID,  markdown=reply_text_markdown)
+                        tocommonroom= api.messages.create(roomId=ROOM_ID_commonRoom,  markdown=reply_text_markdownc)
                         
                     except:
                         print("ERROR - Message \"SSID created\" could not be created")
@@ -226,37 +256,29 @@ def webhook():
                 name_delete_SSID = textList[len(textList) - 1]
 
                 if name_delete_SSID == "Merakilab.dk":
-                    reply_text = "Unfortunately, {} is not a SSID that you can delete :( Contact Greg if you want it deleted.".format(name_delete_SSID)
                     reply_text_m = "Unfortunately, {} is **not a SSID that you can delete** :( Contact Greg if you want it deleted.".format(name_delete_SSID)
                     try: 
-                        api.messages.create(roomId=ROOM_ID, text=reply_text,markdown=reply_text_m)
+                        api.messages.create(roomId=ROOM_ID, markdown=reply_text_m)
                     except:
                         print("ERROR: Could not create delete warning message")
 
                 else: 
                     try:
                         delete_ssid(name_delete_SSID)
-                        reply_text = (
-                            "Thank you fror your request, {} has been deleted!".format(
-                                name_delete_SSID
-                            )
-                        )
+ 
                         reply_text_m = (
                             "Thank you fror your request, **{}** has been deleted!".format(
                                 name_delete_SSID
                             )
                         )
 
-                        reply_text_c = "FYI: Liza deleted SSID: {} at site: Copenhagen".format(
-                            name_delete_SSID
-                        )
                         reply_text_markdownc = "**FYI:** Liza deleted SSID: **{}** at site: **Copenhagen**".format(
                             name_delete_SSID
                         )
                         
                         try:
-                            api.messages.create(roomId=ROOM_ID, text=reply_text,markdown=reply_text_m)
-                            tocommonroom = api.messages.create(roomId=ROOM_ID_commonRoom, text=reply_text_c, markdown=reply_text_markdownc)
+                            api.messages.create(roomId=ROOM_ID, markdown=reply_text_m)
+                            tocommonroom = api.messages.create(roomId=ROOM_ID_commonRoom,  markdown=reply_text_markdownc)
                         except: 
                               print("ERROR: Could not create delete success message")
 
@@ -273,13 +295,7 @@ def webhook():
                     pass
 
             else:
-                reply_text = (
-                    "Oups I did not understand :( I understand the following:  \n"
-                    "Help - I will display my greeting message  \n"
-                    "New SSID <name of new SSID> <password of new SSID> - Create new SSID (minimum 8 characters).\n"
-                    "Change password <SSID> <new password> - Manage SSID passwords  \n"
-                    "Show - Show list of SSIDs.  \n"
-                )
+
                 reply_text_m = (
                     "**Oups I did not understand :( I understand the following:**  \n"
                     "**Help** - I will display my greeting message  \n"  
@@ -288,7 +304,7 @@ def webhook():
                     "**Show** - Show list of SSIDs.  \n"
                 )
                 try:
-                    api.messages.create(roomId=ROOM_ID, text=reply_text,markdown=reply_text_m)
+                    api.messages.create(roomId=ROOM_ID, markdown=reply_text_m)
                 except: 
                     print("ERROR: Could not create \"Cannot understand\" message. "
 
