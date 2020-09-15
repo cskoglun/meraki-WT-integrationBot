@@ -6,8 +6,6 @@
 
 ## Motivation
 
-Include a short description of the motivation behind the creation and maintenance of the project.  Explain **why** the project exists.
-
 This code is the reference to the "Program your network to work for you" webinar. 
 
 main.py is the brain behind a Webex Teams bot that integrates with a Meraki Network. The goal of the bot is to outsource the taks of creating, deleting and managing SSID:s from a network engineer to the receptionst of the company. However, the code itself can be adjusted after your own needs (adjust functions, messages etc.). See it more as a framework to get started with creating Bots, integrating with other systems and learning how to leverage APIs to do that. Enjoy! 
@@ -30,36 +28,33 @@ This is Cisco Sample Code!  What Cisco and third-party technologies are you work
 
 **Cisco Products & Services:**
 
-- Product
-- Service
-
-**Third-Party Products & Services:**
-
-- Product
-- Service
+- Cisco Meraki Cloud Managed Network
+- Cisco Webex Teams Collaboration platform
 
 **Tools & Frameworks:**
 
-- Framework 1
-- Automation Tool 2
+- Flask web application framework
+- Webex Teams SDK
+- Meraki SDK
 
-## Usage
+## Pre-requisites
 
-If people like your project, they will want to use it.  Show them how.
+This application needs to be hosted somewhere where is has access to the internet. It can either be on your local machine where you use for instance a ngrok tunnel to access the internet, or you can host it on a PaaS. It is up to you. 
 
 ## Installation
 
-Provide a step-by-step series of examples and explanations for how to install your project and its dependencies.
+The first step is to clone this github repository to your directory. 
 
+```
+git clone https://github.com/cskoglun/meraki-WT-integrationBot.git
+```
+The second step is to install all packages you need in order to run the code: 
+```
+pip install -r requirements.txt
+```
 ## Authors & Maintainers
 
-Smart people responsible for the creation and maintenance of this project:
-
 - Christina Skoglund <cskoglun@cisco.com>
-
-## Credits
-
-Give proper credit.  Inspired by another project or article?  Was your work made easier by a tutorial?  Include links to the people, projects, and resources that were influential in the creation of this project.
 
 ## License
 
